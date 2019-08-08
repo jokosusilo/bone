@@ -18,4 +18,22 @@ class Slider extends Model
             removeFile($slider->image);
         });
     }
+
+    public function scopeOrder($query)
+    {
+        return $query->orderBy('order', 'asc');
+    }
+
+    public function next(){
+        return $this->order()
+                ->where('order', '>', $this->order)
+                ->first();
+
+    }
+    public function previous(){
+        return $this->order()
+                ->where('order', '<', $this->order)
+                ->get()
+                ->last();
+    }
 }

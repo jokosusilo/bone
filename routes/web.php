@@ -35,6 +35,7 @@ Route::group([
 		'index', 'show', 'destroy'
 	]);
 	Route::resource('sliders', 'SliderController');
+	Route::post('/move-slider', 'MoveSliderController@update')->name('move-slider');
 	Route::resource('social-media', 'SocialMediaController');
 	Route::group(['prefix' => 'settings'], function(){
 		Route::get('', 'SettingController@edit')->name('settings.edit');

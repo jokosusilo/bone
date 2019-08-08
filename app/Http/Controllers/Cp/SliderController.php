@@ -16,7 +16,7 @@ class SliderController extends Controller
     public function index()
     {
         return view('cp.slider.index', [
-            'sliders' => Slider::all()
+            'sliders' => Slider::order()->get()
         ]);
     }
 
@@ -46,9 +46,13 @@ class SliderController extends Controller
         $file = $request->file('image');
         $sliderImage = $file->move('files/slider/', generateFileName($request->caption, $file));
 
-        Slider::create([
+        $slider = Slider::create([
             'image' => $sliderImage,
             'caption' => $request->caption,
+        ]);
+
+        $slider->update([
+            'order' => $slider->id
         ]);
 
         return redirect(route('cp.sliders.index'))
