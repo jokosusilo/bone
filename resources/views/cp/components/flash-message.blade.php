@@ -10,3 +10,16 @@
     </div>
 
 @endif
+
+@if (session('error'))
+
+    <div class="alert alert-light alert-dismissible show fade" style="border-left: 4px solid #E53E3E;box-shadow: 0 1px 1px rgba(0,0,0,0.1); background-color: #fff;">
+        <div class="alert-body">
+            <button class="close" data-dismiss="alert">
+              <span>×</span>
+            </button>
+            {{ session('error') }}
+        </div>
+    </div>
+
+@endif

@@ -104,6 +104,11 @@
                                 <i class="fas fa-link"></i> <span>Media Sosial</span>
                             </a>
                         </li>
+                        <li class="{{ activeLink('cp.backups') }}">
+                            <a class="nav-link" href="{{ route('cp.backups.index') }}">
+                                <i class="fas fa-hdd"></i> <span>Backup</span>
+                            </a>
+                        </li>
                         <li class="{{ activeLink('cp.settings.edit', false) }}">
                             <a class="nav-link" href="{{ route('cp.settings.edit') }}">
                                 <i class="fas fa-cog"></i> <span>Settings</span>

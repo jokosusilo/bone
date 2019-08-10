@@ -37,6 +37,12 @@ Route::group([
 	Route::resource('sliders', 'SliderController');
 	Route::post('/move-slider', 'MoveSliderController@update')->name('move-slider');
 	Route::resource('social-media', 'SocialMediaController');
+	Route::group(['prefix' => 'backups'], function(){
+		Route::get('/', 'BackupController@index')->name('backups.index');
+		Route::get('/create', 'BackupController@create')->name('backups.create');
+		Route::get('/download/{disk}/{filename}', 'BackupController@download')->name('backups.download');
+		Route::post('/delete', 'BackupController@destroy')->name('backups.destroy');
+	});
 	Route::group(['prefix' => 'settings'], function(){
 		Route::get('', 'SettingController@edit')->name('settings.edit');
 		Route::put('', 'SettingController@update')->name('settings.update');
