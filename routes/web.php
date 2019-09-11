@@ -40,7 +40,7 @@ Route::group([
 	Route::group(['prefix' => 'backups'], function(){
 		Route::get('/', 'BackupController@index')->name('backups.index');
 		Route::get('/create', 'BackupController@create')->name('backups.create');
-		Route::get('/download/{disk}/{filename}', 'BackupController@download')->name('backups.download');
+		Route::get('/download', 'BackupController@download')->name('backups.download');
 		Route::post('/delete', 'BackupController@destroy')->name('backups.destroy');
 	});
 	Route::group(['prefix' => 'settings'], function(){

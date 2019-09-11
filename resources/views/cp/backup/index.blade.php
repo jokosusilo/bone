@@ -40,7 +40,7 @@
                                             <input type="hidden" name="file_path" value="{{ $backup['file_path'] }}">
 
                                             <div>
-                                                <a href="{{ route('cp.backups.download', ['disk' => $backup['disk'], 'file_name' => $backup['file_name']]) }}" class="btn">
+                                                <a href="{{ route('cp.backups.download', ['disk' => $backup['disk'], 'filename' => $backup['file_name']]) }}" class="btn">
                                                     <i class="fa fa-cloud-download-alt"></i> Download
                                                 </a>
                                                 <div class="bullet"></div>

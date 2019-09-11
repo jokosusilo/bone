@@ -73,22 +73,22 @@ class BackupController extends Controller
      * @param  String filename
      * @return \Illuminate\Http\Response
      */
-    public function download($disk, $filename)
+    public function download(Request $request)
     {
-        if ($disk !== 'local') {
+        if ($request->disk !== 'local') {
             return redirect(route('cp.backups.index'))
                     ->with('error', "Download file hanya support untuk disk `local`.");
         }
 
-        $filePath = storage_path('app/'.config('backup.backup.name').'/'.$filename);
+        $filePath = storage_path('app/'.config('backup.backup.name').'/'.$request->filename);
 
         if (file_exists($filePath)) {
             return response()
-                    ->download($filePath, config('backup.backup.name').'_'.$filename);
+                    ->download($filePath, config('backup.backup.name').'_'.$request->filename);
         }
 
         return redirect(route('cp.backups.index'))
-                    ->with('error', "Download file `{$filename}` di disk `{$disk}` gagal. File tidak ditemukan.");
+                    ->with('error', "Download file `{$request->filename}` di disk `{$request->disk}` gagal. File tidak ditemukan.");
 
     }
 
